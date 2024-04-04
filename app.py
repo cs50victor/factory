@@ -1,10 +1,10 @@
-from robyn import Robyn
+from robyn import Robyn, Request
 
 app = Robyn(__file__)
 
 
 @app.get("/")
-def index():
+def index(request: Request):
     return "Hello World!"
 
 
