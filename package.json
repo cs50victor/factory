@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"bun run next dev\" \"robyn server/app.py --compile-rust-path='./server' --dev\"",
+    "dev": "concurrently \"bun run next dev\" \"robyn server/app.py --dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
