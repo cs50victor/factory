@@ -8,4 +8,4 @@ AI agents framework
 - `pip install server/requirements.txt`
 - `bun dev`
 
-> after making any pip updates use 'pip list --format=freeze > requirements.txt'
+> after making any pip updates use 'pip list --format=freeze > server/requirements.txt'

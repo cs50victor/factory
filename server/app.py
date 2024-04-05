@@ -1,22 +1,41 @@
-from robyn import Robyn, Request, WebSocket
+from robyn import Response, Robyn, Request, WebSocket, WebSocketConnector
+from collections import defaultdict
+from robyn.logger import logger
+from example import say_hello # type: ignore
 
 app = Robyn(__file__)
 
-ws = WebSocket(app, "/logs")
+ws_logs = WebSocket(app, "/logs")
+ws_state = WebSocket(app, "/state")
 
+websocket_state = defaultdict(int)
+
+@app.before_request()
+async def log_request(request: Request):
+    logger.info(f"Received request: %s", request)
+
+@app.after_request()
+async def log_response(response: Response):
+    logger.info(f"Sending response: %s", response)
+    
 @app.get("/", const=True)
 def index(request: Request):
     return "Hello World!"
 
-@ws.on("connect")
+@ws_logs.on("connect")
 async def notify_connect():
     return "Connected to notifications"
 
-@ws.on("message")
-async def notify_message(message):
-    return f"Received: {message}"
+@ws_logs.on("message")
+async def message(ws: WebSocketConnector, msg: str, global_dependencies) -> str:
+    websocket_id = ws.id
+    state = websocket_state[websocket_id]
+    await ws.async_send_to(websocket_id, "This is a message to self")
+    x  = say_hello()
+    print(x)
+    return ""
 
-@ws.on("close")
+@ws_logs.on("close")
 async def notify_close():
     return "Disconnected from notifications"
 
