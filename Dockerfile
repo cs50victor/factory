@@ -4,9 +4,9 @@ WORKDIR /workspace
 
 COPY . .
 
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install --no-cache-dir --upgrade -r server/requirements.txt
 
 
 EXPOSE 8080
 
-CMD ["python3", "app.py", "--log-level=DEBUG"]
+CMD ["python3", "server/app.py", "--log-level=DEBUG"]

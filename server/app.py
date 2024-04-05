@@ -3,7 +3,7 @@ from robyn import Robyn, Request
 app = Robyn(__file__)
 
 
-@app.get("/")
+@app.get("/", const=True)
 def index(request: Request):
     return "Hello World!"
 

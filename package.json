@@ -1,9 +1,10 @@
 {
-  "name": "factory_www",
+  "name": "factory",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:all": "concurrently \"bun dev\" \"robyn server/app.py --dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,14 +15,15 @@
     "next": "14.1.4"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.4"
+    "typescript": "^5"
   }
 }

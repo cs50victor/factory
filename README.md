@@ -1,9 +1,11 @@
 # factory
+
 AI agents framework
 
 ## Get Started / Run Code
 
-- `pip install robyn`
-- `robyn app.py`
+- `conda create --name factory python=3.11`
+- `pip install server/requirements.txt`
+- `bun dev:all`
 
-
+> after making any pip updates use 'pip list --format=freeze > requirements.txt'
