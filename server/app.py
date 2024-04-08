@@ -2,6 +2,7 @@ from robyn import Response, Robyn, Request, WebSocket, WebSocketConnector
 from collections import defaultdict
 from robyn.logger import logger
 from example import say_hello # type: ignore
+from meta_prompt import claude_metaprompt
 
 app = Robyn(__file__)
 
